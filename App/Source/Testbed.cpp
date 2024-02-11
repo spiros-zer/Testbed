@@ -11,11 +11,14 @@ void CheckPolar();
 
 int main(int argc, char* argv[])
 {
-    std::cout << "/**** CHECKING CARTESIAN COORDINATES LIB" << '\n';
+    std::cout << "/**** CHECKING CARTESIAN COORDINATES LIB */" << '\n';
     CheckCartesian();
+    std::cout << '\n';
 
-    std::cout << "/**** CHECKING POLAR COORDINATES LIB" << '\n';
+    std::cout << "/**** CHECKING POLAR COORDINATES LIB */" << '\n';
     CheckPolar();
+    std::cout << '\n';
+
     
     return 0;
 }
@@ -57,7 +60,7 @@ void CheckCartesian()
 void CheckPolar()
 {
     /**** INITIALIZATION TESTTING */
-    std::cout << "/**** INITIALIZATION TESTING */" << '\n';
+    std::cout << "/** INITIALIZATION TESTING */" << '\n';
     
     const PolarCoordinates X(1, 90);
     std::cout << "X ";
