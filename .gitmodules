@@ -10,3 +10,9 @@
 [submodule "Core/Source/ComplexNumbers"]
 	path = Core/Source/ComplexNumbers
 	url = https://github.com/spiros-zer/ComplexNumbers
+[submodule "Core/Source/Bitstreams"]
+	path = Core/Source/Bitstreams
+	url = https://github.com/spiros-zer/Bitstreams.git
+[submodule "Core/Source/Modulation"]
+	path = Core/Source/Modulation
+	url = https://github.com/spiros-zer/Modulation.git

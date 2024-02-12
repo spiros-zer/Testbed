@@ -2,14 +2,20 @@
 
 
 #include<iostream>
+#include <vector>
 
 #include "CartesianCoordinates/CartesianCoordinates2D.h"
 #include "ComplexNumbers/ComplexNumbers.h"
 #include "PolarCoordinates/PolarCoordinates.h"
 
+template<std::size_t N, class T>
+constexpr std::size_t countof(T(&)[N]) { return N; }
+
 void CheckCartesian();
 void CheckPolar();
 void CheckComplex();
+void CheckBitstreams();
+void CheckModulations();
 
 int main(int argc, char* argv[])
 {
@@ -152,4 +158,44 @@ void CheckComplex()
     std::cout << "Polar form of W = ";
     W.PolarForm->Print();
     std::cout << '\n';
+}
+
+void CheckBitstreams()
+{
+    double DoubleArray[] = {-1, 0, 0.5, 1, 2, 3, 4, 5, 6, 7, 10, 1024};
+    Bitstream Bits{DoubleArray};
+    std::vector<double> Nums;
+
+    std::cout << "Binary data contained in Bits:\n";
+    Bits.PrintBinary();
+
+    Bits.Data2Obj(Nums);
+    std::cout << "Conversion of binary data to double yields the following:\n";
+    for (const double& Num : Nums)
+    {
+        std::cout << Num << " ";
+    }
+    std::cout << std::endl;
+}
+
+void CheckModulations()
+{
+    BPSK BPSKModulation;
+    std::cout << "> Modulation scheme (BPSK) Initialized" << std::endl;
+    std::cout << BPSKModulation.GetSpectralEfficiency() << std::endl;
+    BPSKModulation.PrintModulationSymbols();
+
+    double Data[] = {-1, 0, 0.5, 1, 2, 3, 4, 5, 6, 7, 10, 1024};
+    Bitstream Bytes{Data};
+    Bytes.PrintBinary();
+
+    //ComplexNumber Symbols[countof(Data) * sizeof(double)];
+    std::vector<ComplexNumber> Symbols;
+
+    BPSKModulation.ConvertToSymbols(&Bytes, Symbols);
+    for (const ComplexNumber& Symbol : Symbols)
+    {
+        std::cout << Symbol.ToString() << "\t";
+    }
+    std::cout << std::endl;
 }
