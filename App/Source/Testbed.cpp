@@ -4,6 +4,7 @@
 #include<iostream>
 
 #include "CartesianCoordinates/CartesianCoordinates2D.h"
+#include "ComplexNumbers/ComplexNumbers.h"
 #include "PolarCoordinates/PolarCoordinates.h"
 
 void CheckCartesian();
@@ -20,6 +21,9 @@ int main(int argc, char* argv[])
     CheckPolar();
     std::cout << '\n';
 
+    std::cout << "/**** CHECKING COMPLEX NUMBERS LIB */" << '\n';
+    CheckComplex();
+    std::cout << '\n';
     
     return 0;
 }
