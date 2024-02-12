@@ -7,3 +7,6 @@
 [submodule "Core/Source/Converters"]
 	path = Core/Source/Converters
 	url = https://github.com/spiros-zer/Converters.git
+[submodule "Core/Source/ComplexNumbers"]
+	path = Core/Source/ComplexNumbers
+	url = https://github.com/spiros-zer/ComplexNumbers
