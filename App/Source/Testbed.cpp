@@ -4,8 +4,10 @@
 #include<iostream>
 #include <vector>
 
+#include "Bitstreams/Bitstream.h"
 #include "CartesianCoordinates/CartesianCoordinates2D.h"
 #include "ComplexNumbers/ComplexNumbers.h"
+#include "Modulation/BPSK.h"
 #include "PolarCoordinates/PolarCoordinates.h"
 
 template<std::size_t N, class T>
