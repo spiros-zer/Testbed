@@ -8,6 +8,7 @@
 #include "CartesianCoordinates/CartesianCoordinates2D.h"
 #include "ComplexNumbers/ComplexNumbers.h"
 //#include "Modulation/BPSK.h"
+#include "Modulation/BPSK.h"
 #include "PolarCoordinates/PolarCoordinates.h"
 
 template<std::size_t N, class T>
@@ -35,6 +36,10 @@ int main(int argc, char* argv[])
 
     std::cout << "/**** CHECKING BITSTREAM LIB */" << '\n';
     CheckBitstreams();
+    std::cout << '\n';
+
+    std::cout << "/**** CHECKING BPSK LIB */" << '\n';
+    CheckModulations();
     std::cout << '\n';
     
     return 0;
@@ -186,22 +191,21 @@ void CheckBitstreams()
 
 void CheckModulations()
 {
-    /*BPSK BPSKModulation;
-    std::cout << "> Modulation scheme (BPSK) Initialized" << std::endl;
-    std::cout << BPSKModulation.GetSpectralEfficiency() << std::endl;
-    BPSKModulation.PrintModulationSymbols();
+    std::cout << "> Modulation scheme (BPSK) Initialized" << '\n';
+    std::cout << BPSK::GetBPSKSystem().GetSpectralEfficiency() << '\n';
+    BPSK::GetBPSKSystem().PrintModulationSymbols();
 
     double Data[] = {-1, 0, 0.5, 1, 2, 3, 4, 5, 6, 7, 10, 1024};
     Bitstream Bytes{Data};
     Bytes.PrintBinary();
 
     //ComplexNumber Symbols[countof(Data) * sizeof(double)];
-    std::vector<ComplexNumber> Symbols;
+    std::vector<ComplexNumbers> Symbols;
 
-    BPSKModulation.ConvertToSymbols(&Bytes, Symbols);
-    for (const ComplexNumber& Symbol : Symbols)
+    BPSK::GetBPSKSystem().ConvertToSymbols(&Bytes, Symbols);
+    for (const ComplexNumbers& Symbol : Symbols)
     {
         std::cout << Symbol.ToString() << "\t";
     }
-    std::cout << std::endl;*/
+    std::cout << '\n';
 }
