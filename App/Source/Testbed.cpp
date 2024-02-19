@@ -7,7 +7,7 @@
 #include "Bitstreams/Bitstream.h"
 #include "CartesianCoordinates/CartesianCoordinates2D.h"
 #include "ComplexNumbers/ComplexNumbers.h"
-#include "Modulation/BPSK.h"
+//#include "Modulation/BPSK.h"
 #include "PolarCoordinates/PolarCoordinates.h"
 
 template<std::size_t N, class T>
@@ -31,6 +31,10 @@ int main(int argc, char* argv[])
 
     std::cout << "/**** CHECKING COMPLEX NUMBERS LIB */" << '\n';
     CheckComplex();
+    std::cout << '\n';
+
+    std::cout << "/**** CHECKING BITSTREAM LIB */" << '\n';
+    CheckBitstreams();
     std::cout << '\n';
     
     return 0;
@@ -177,12 +181,12 @@ void CheckBitstreams()
     {
         std::cout << Num << " ";
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
 
 void CheckModulations()
 {
-    BPSK BPSKModulation;
+    /*BPSK BPSKModulation;
     std::cout << "> Modulation scheme (BPSK) Initialized" << std::endl;
     std::cout << BPSKModulation.GetSpectralEfficiency() << std::endl;
     BPSKModulation.PrintModulationSymbols();
@@ -199,5 +203,5 @@ void CheckModulations()
     {
         std::cout << Symbol.ToString() << "\t";
     }
-    std::cout << std::endl;
+    std::cout << std::endl;*/
 }
