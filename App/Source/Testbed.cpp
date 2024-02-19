@@ -22,23 +22,23 @@ void CheckModulations();
 
 int main(int argc, char* argv[])
 {
-    std::cout << "/**** CHECKING CARTESIAN COORDINATES LIB */" << '\n';
+    std::cout << "/******* CHECKING CARTESIAN COORDINATES LIB *******/" << '\n';
     CheckCartesian();
     std::cout << '\n';
 
-    std::cout << "/**** CHECKING POLAR COORDINATES LIB */" << '\n';
+    std::cout << "/******* CHECKING POLAR COORDINATES LIB *******/" << '\n';
     CheckPolar();
     std::cout << '\n';
 
-    std::cout << "/**** CHECKING COMPLEX NUMBERS LIB */" << '\n';
+    std::cout << "/******* CHECKING COMPLEX NUMBERS LIB *******/" << '\n';
     CheckComplex();
     std::cout << '\n';
 
-    std::cout << "/**** CHECKING BITSTREAM LIB */" << '\n';
+    std::cout << "/******* CHECKING BITSTREAM LIB *******/" << '\n';
     CheckBitstreams();
     std::cout << '\n';
 
-    std::cout << "/**** CHECKING BPSK LIB */" << '\n';
+    std::cout << "/******* CHECKING MODULATIONS LIB *******/" << '\n';
     CheckModulations();
     std::cout << '\n';
     
@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 void CheckCartesian()
 {
     /** INITIALIZATION TESTING */
-    std::cout << "/** INITIALIZATION TESTING */" << '\n';
+    std::cout << "/**** INITIALIZATION TESTING ****/" << '\n';
     
     const CartesianCoordinates2D PointA(-0.56, -10.09);
     std::cout << "PointA ";
@@ -66,7 +66,7 @@ void CheckCartesian()
     std::cout << '\n';
 
     /** OPERATOR TESTING */
-    std::cout << "/** OPERATOR TESTING */" << '\n';
+    std::cout << "/**** OPERATOR TESTING ****/" << '\n';
 
     PointC = PointB - PointA;
     std::cout << "PointC = PointB - PointA = ";
@@ -82,7 +82,7 @@ void CheckCartesian()
 void CheckPolar()
 {
     /**** INITIALIZATION TESTTING */
-    std::cout << "/** INITIALIZATION TESTING */" << '\n';
+    std::cout << "/**** INITIALIZATION TESTING ****/" << '\n';
     
     const PolarCoordinates X(1, 90);
     std::cout << "X ";
@@ -100,7 +100,7 @@ void CheckPolar()
     std::cout << '\n';
 
     /**** OPERATOR TESTING */
-    std::cout << "/**** OPERATOR TESTING */" << '\n';
+    std::cout << "/**** OPERATOR TESTING ****/" << '\n';
 
     Z = X * Y;
     std::cout << "Z = Χ * Υ = ";
@@ -115,7 +115,7 @@ void CheckPolar()
 
 void CheckComplex()
 {
-    std::cout << "/**** FUNCTIONALITY TESTING OF COMPLEX NUMBERS */\n";
+    std::cout << "/**** FUNCTIONALITY TESTING OF COMPLEX NUMBERS ****/\n";
 
     std::cout << "Test 1: Initialization of a Complex." << '\n';
     ComplexNumbers A = { 3, 1 };
@@ -173,7 +173,14 @@ void CheckComplex()
 
 void CheckBitstreams()
 {
-    double DoubleArray[] = {-1, 0, 0.5, 1, 2, 3, 4, 5, 6, 7, 10, 1024};
+    constexpr double DoubleArray[] = {-1, 0, 0.5, 1, 2, 3, 4, 5, 6, 7, 10, 1024};
+    std::cout << "Initial data of array is:\n";
+    for (const double& Num : DoubleArray)
+    {
+        std::cout << Num << " ";
+    }
+    std::cout << '\n';
+    
     Bitstream Bits{DoubleArray};
     std::vector<double> Nums;
 
@@ -191,11 +198,14 @@ void CheckBitstreams()
 
 void CheckModulations()
 {
-    std::cout << "> Modulation scheme (BPSK) Initialized" << '\n';
+    std::cout << "Modulation scheme:";
+    std::cout << BPSK::GetBPSKSystem().GetModulationName() << '\n';
+
+    std::cout << "Spectral Efficiency =";
     std::cout << BPSK::GetBPSKSystem().GetSpectralEfficiency() << '\n';
     BPSK::GetBPSKSystem().PrintModulationSymbols();
 
-    double Data[] = {-1, 0, 0.5, 1, 2, 3, 4, 5, 6, 7, 10, 1024};
+    constexpr double Data[] = {-1, 0, 0.5, 1, 2, 3, 4, 5, 6, 7, 10, 1024};
     Bitstream Bytes{Data};
     Bytes.PrintBinary();
 
