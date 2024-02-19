@@ -16,3 +16,6 @@
 [submodule "Core/Source/Modulation"]
 	path = Core/Source/Modulation
 	url = https://github.com/spiros-zer/Modulation.git
+[submodule "Core/Source/Point"]
+	path = Core/Source/Point
+	url = https://github.com/spiros-zer/Point.git
