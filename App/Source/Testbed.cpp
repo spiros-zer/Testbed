@@ -198,24 +198,35 @@ void CheckBitstreams()
 
 void CheckModulations()
 {
-    std::cout << "Modulation scheme:";
+    std::cout << "Modulation scheme: ";
     std::cout << BPSK::GetBPSKSystem().GetModulationName() << '\n';
 
     std::cout << "Spectral Efficiency =";
     std::cout << BPSK::GetBPSKSystem().GetSpectralEfficiency() << '\n';
-    BPSK::GetBPSKSystem().PrintModulationSymbols();
 
     constexpr double Data[] = {-1, 0, 0.5, 1, 2, 3, 4, 5, 6, 7, 10, 1024};
     Bitstream Bytes{Data};
-    Bytes.PrintBinary();
-
-    //ComplexNumber Symbols[countof(Data) * sizeof(double)];
+    
     std::vector<ComplexNumbers> Symbols;
-
     BPSK::GetBPSKSystem().ConvertToSymbols(&Bytes, Symbols);
-    for (const ComplexNumbers& Symbol : Symbols)
+
+    Bitstream Bytes2{};
+    BPSK::GetBPSKSystem().ConvertToBinary(Symbols, Bytes2);
+    
+    std::vector<double> Nums;
+    Bytes2.Data2Obj(Nums);
+
+    std::cout << "Conversion double2binary then applying BPSK modulation (binary2symbol) and demodulation (symbol2binary) then binary2double yields the following:\n";
+    for (const double& Num : Nums)
     {
-        std::cout << Symbol.ToString() << "\t";
+        std::cout << Num << " ";
+    }
+    std::cout << '\n';
+
+    std::cout << "And original data was:\n";
+    for (const double& Num : Data)
+    {
+        std::cout << Num << " ";
     }
     std::cout << '\n';
 }
